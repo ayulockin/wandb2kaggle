@@ -31,7 +31,7 @@ jobs:
           artifact_path: 'ayut/sr_ffhq/3jygvqe3_model'
 
       - name: Print W&B Artifact Dir Path
-        run: echo path ${{ steps.download.outputs.artifact_model_name}}
+        run: echo path ${{ steps.download.outputs.artifact_dir_path }}
         shell: bash
 
       - name: Upload as Kaggle Dataset
