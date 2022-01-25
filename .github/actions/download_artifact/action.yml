@@ -12,7 +12,7 @@ runs:
       shell: bash
     - run: |
         output = $(python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }})
-        echo "::set-output name=artifact_dir::$output"
+        echo "::set-output name=artifact_dir::${echo $output}"
       shell: bash
       id: get_artifact_dir
     - name: Print Artifact Dir
