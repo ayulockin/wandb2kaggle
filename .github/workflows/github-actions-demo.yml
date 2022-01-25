@@ -20,5 +20,11 @@ jobs:
           WANDB_API: ${{ secrets.WANDB_KEY }}
         run: |
           wandb login "$WANDB_API"
+      - name: Kaggle Login
+        shell: bash
+        run: |
+          export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+          export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
       - name: Download the model
         run: python download_model_artifact.py
+      - name: Upload to Kaggle Dataset
