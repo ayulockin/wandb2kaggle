@@ -8,16 +8,18 @@ inputs:
 outputs:
   artifact_dir_path:
     description: "Path to the Artifact Directory to be uploaded as Kaggle Dataset."
-    value: ${{ steps.get_artifact_dir.outputs.artifact_dir}}
+    value: ".artifact/${{ steps.target_path.outputs.artifact_model_name}}"
 runs:
   using: "composite"
   steps:
     - run: echo Artifact Path ${{ inputs.artifact_path }}.
       shell: bash
-    - id: get_artifact_dir
-      run: |
-        echo FROM SCRIPT "::set-output name=artifact_dir::$(python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }})"
+    - name: Run download_model_artifact.py
+      run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }})"
       shell: bash
-    - name: Print Artifact Dir
-      run: echo PRINTING ARTIFACT DIR "${{ steps.get_artifact_dir.outputs.artifact_dir }}"
+    - name: Get target dir to be uploaded as Kaggle dataset
+      id: target_path
+      run: |
+        IFS='/' read -r -a array <<< "$inputs.artifact_path"
+        echo "::set-output name=artifact_model_name::$(echo ${array[0]})"
       shell: bash

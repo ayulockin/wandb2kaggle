@@ -13,9 +13,6 @@ def main(args):
     run = wandb.init(project=args.project_name)
     artifact = run.use_artifact(f'{args.artifact_name}:latest', type='model')
     artifact_dir = artifact.download()
-    print(artifact_dir)
-
-    return artifact_dir
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Model download and upload script', parents=[get_args_parser()])
