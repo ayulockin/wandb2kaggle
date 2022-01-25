@@ -5,15 +5,19 @@ inputs:
     description: 'Artifact path of the format <wandb profile id>/<wandb project name>/<artifact name>'
     required: true
     default: 'ayut/sr_ffhq/3jygvqe3_model'
+outputs:
+  artifact_dir_path:
+    description: "Path to the Artifact Directory to be uploaded as Kaggle Dataset."
+    value: ${{ steps.get_artifact_dir.outputs.artifact_dir}}
 runs:
   using: "composite"
   steps:
     - run: echo Artifact Path ${{ inputs.artifact_path }}.
       shell: bash
-    - run: |
+    - id: get_artifact_dir
+      run: |
         echo FROM SCRIPT "::set-output name=artifact_dir::$(python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }})"
       shell: bash
-      id: get_artifact_dir
     - name: Print Artifact Dir
       run: echo PRINTING ARTIFACT DIR "${{ steps.get_artifact_dir.outputs.artifact_dir }}"
       shell: bash
