@@ -11,9 +11,9 @@ runs:
     - run: echo Artifact Path ${{ inputs.artifact_path }}.
       shell: bash
     - run: |
-        echo "::set-output name=artifact_dir::$(python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }})"
+        echo FROM SCRIPT "::set-output name=artifact_dir::$(python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }})"
       shell: bash
       id: get_artifact_dir
     - name: Print Artifact Dir
-      run: echo "${{ steps.get_artifact_dir.outputs.artifact_dir }}"
+      run: echo PRINTING ARTIFACT DIR "${{ steps.get_artifact_dir.outputs.artifact_dir }}"
       shell: bash
