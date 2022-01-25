@@ -20,5 +20,4 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Model download and upload script', parents=[get_args_parser()])
     args = parser.parse_args()
-    
-    artifact_dir = main(args)
+    main(args)
