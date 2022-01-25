@@ -23,4 +23,3 @@ runs:
       with:
         msg: {{ inputs.artifact_path }}
         separator: '/'
-      shell: bash
