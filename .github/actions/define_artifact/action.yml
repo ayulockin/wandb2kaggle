@@ -1,0 +1,6 @@
+name: 'Define the artifact model name'
+description: 'Provide the name of the W&B model artifact. You can find it by visiting the artifact page of your W&B workspace.'
+inputs:
+  artifact_path:  ayut/sr_ffhq/3jygvqe3_model
+    description: 'Artifact path of the format <wandb profile id>/<wandb project name>/<artifact name>'
+    required: true

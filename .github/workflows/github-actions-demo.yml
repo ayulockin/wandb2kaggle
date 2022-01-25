@@ -6,28 +6,37 @@ jobs:
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
+      
+      - name: Get the W&B artifact path
+        uses: ./.github/actions/define_artifact
+
       - name: Setup Python version
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
+
       - name: Install the packages
         uses: BSFishy/pip-action@v1
         with:
           packages: wandb kaggle
+
       - name: Loging W&B 
         shell: bash
         env:
           WANDB_API: ${{ secrets.WANDB_KEY }}
         run: |
           wandb login "$WANDB_API"
+          
       - name: Download the model
-        run: python download_model_artifact.py
+        run: python download_model_artifact.py --artifact_name ${{ inputs.who-to-greet }}
+
       - name: Upload as Kaggle Dataset
         shell: bash
         run: |
           export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
           export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
           kaggle datasets -h
+
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
