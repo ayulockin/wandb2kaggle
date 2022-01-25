@@ -1,25 +1,29 @@
 name: 'Download the model saved as W&B Artifact'
 description: 'Provide the name of the W&B model artifact where the model is saved. You can find it by visiting the artifact page of your W&B workspace.'
 inputs:
-  artifact_path:
-    description: 'Artifact path of the format <wandb profile id>/<wandb project name>/<artifact name>'
+  artifact_name:
+    description: 'Name of the W&B artifact in the format <wandb profile id>/<wandb project name>/<artifact name>'
     required: true
     default: 'ayut/sr_ffhq/3jygvqe3_model'
+  root_path:
+    description: 'Path where the model will be downloaded'
+    required: false
+    default: 'model'
 outputs:
   artifact_dir_path:
     description: "Path to the Artifact Directory to be uploaded as Kaggle Dataset."
-    value: ".artifact/${{ steps.target_path.outputs._2}}"
+    value: ./${{ inputs.root_path  }}
 runs:
   using: "composite"
   steps:
-    - run: echo Artifact Path ${{ inputs.artifact_path }}.
+    - run: echo Artifact Path ${{ inputs.artifact_name }}.
       shell: bash
     - name: Run download_model_artifact.py
-      run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }}
+      run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_name }} --root_path ${{ inputs.root_path }}
       shell: bash
     - name: Get target dir to be uploaded as Kaggle dataset
       id: target_path
       uses: jungwinter/split@v2
       with:
-        msg: ${{ inputs.artifact_path }}
+        msg: ${{ inputs.artifact_name }}
         separator: '/'
