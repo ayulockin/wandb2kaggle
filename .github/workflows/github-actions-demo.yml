@@ -4,16 +4,21 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Clone the repository
+        uses: actions/checkout@v2
+      - name: Setup Python version
+        uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      - uses: BSFishy/pip-action@v1
+      - name: Install the packages
+        uses: BSFishy/pip-action@v1
         with:
           packages: wandb kaggle
-      - shell: bash
+      - name: Loging W&B 
+        shell: bash
         env:
           WANDB_API: ${{ secrets.WANDB_KEY }}
         run: |
           wandb login "$WANDB_API"
-      - run: python download_model_artifact.py
+      - name: Download the model
+        run: python download_model_artifact.py
