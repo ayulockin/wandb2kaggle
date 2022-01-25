@@ -1,9 +1,12 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  W&B-Kaggle:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Setup Python version
         uses: actions/setup-python@v2
         with:
@@ -20,11 +23,12 @@ jobs:
           WANDB_API: ${{ secrets.WANDB_KEY }}
         run: |
           wandb login "$WANDB_API"
-          
-      - name: Clone the repository
-        uses: actions/checkout@v2
-          
-      - name: Download the model
+      
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      - name: Download Model
         id: foo
         uses: ./.github/actions/download_artifact
         with:
