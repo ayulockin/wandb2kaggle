@@ -27,3 +27,7 @@ jobs:
           export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
       - name: Download the model
         run: python download_model_artifact.py
+      - name: Upload as Kaggle Dataset
+        shell: bash
+        run: |
+          kaggle datasets -h
