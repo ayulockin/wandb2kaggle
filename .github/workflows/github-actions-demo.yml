@@ -11,4 +11,9 @@ jobs:
       - uses: BSFishy/pip-action@v1
         with:
           packages: wandb kaggle
+      - shell: bash
+        env:
+          SUPER_SECRET: ${{ secrets.SuperSecret }}
+        run: |
+          wandb login "$SUPER_SECRET"
       - run: python download_model_artifact.py
