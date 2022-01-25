@@ -20,6 +20,6 @@ runs:
     - name: Get target dir to be uploaded as Kaggle dataset
       id: target_path
       run: |
-        IFS='/' read -r -a array <<< "$inputs.artifact_path"
+        IFS='/' read -r -a array <<< "${{ inputs.artifact_path }}"
         echo "::set-output name=artifact_model_name::$(echo ${array[0]})"
       shell: bash
