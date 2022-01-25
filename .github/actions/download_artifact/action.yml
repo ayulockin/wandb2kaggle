@@ -11,3 +11,4 @@ runs:
     - run: echo Artifact Path ${{ inputs.artifact_path }}.
       shell: bash
     - run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }}
+      shell: bash
