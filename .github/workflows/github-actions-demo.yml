@@ -13,7 +13,7 @@ jobs:
           packages: wandb kaggle
       - shell: bash
         env:
-          SUPER_SECRET: ${{ secrets.SuperSecret }}
+          WANDB_API: ${{ secrets.WANDB_KEY }}
         run: |
-          wandb login "$SUPER_SECRET"
+          wandb login "$WANDB_API"
       - run: python download_model_artifact.py
