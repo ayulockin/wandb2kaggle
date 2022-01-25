@@ -28,9 +28,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
 
-      - name: Download Model
-        id: foo
-        uses: ./.github/actions/download_artifact
+      - uses: ./.github/actions/download_artifact
         with:
           artifact_path: 'ayut/sr_ffhq/3jygvqe3_model'
 
