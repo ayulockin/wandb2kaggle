@@ -1,42 +1,57 @@
-name: GitHub Actions Demo
-on: [push]
-jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clone the repository
-        uses: actions/checkout@v2
+# name: GitHub Actions Demo
+# on: [push]
+# jobs:
+#   Explore-GitHub-Actions:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Clone the repository
+#         uses: actions/checkout@v2
 
-      - name: Setup Python version
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
+#       - name: Setup Python version
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.9'
 
-      - name: Install the packages
-        uses: BSFishy/pip-action@v1
-        with:
-          packages: wandb kaggle
+#       - name: Install the packages
+#         uses: BSFishy/pip-action@v1
+#         with:
+#           packages: wandb kaggle
 
-      - name: Loging W&B 
-        shell: bash
-        env:
-          WANDB_API: ${{ secrets.WANDB_KEY }}
-        run: |
-          wandb login "$WANDB_API"
+#       - name: Loging W&B 
+#         shell: bash
+#         env:
+#           WANDB_API: ${{ secrets.WANDB_KEY }}
+#         run: |
+#           wandb login "$WANDB_API"
           
-      - name: Download the model
-        id: foo
-        uses: ./.github/actions/download_artifact
+#       - name: Download the model
+#         id: foo
+#         uses: ./.github/actions/download_artifact
+#         with:
+#           artifact_path: 'ayut/sr_ffhq/3jygvqe3_model'
+
+#       - name: Upload as Kaggle Dataset
+#         shell: bash
+#         run: |
+#           export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+#           export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
+#           kaggle datasets -h
+
+#       - name: List files in the repository
+#         run: |
+#           ls ${{ github.workspace }}
+
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: actions/wandb-artifact-to-kaggle-dataset@v1
         with:
-          artifact_path: 'ayut/sr_ffhq/3jygvqe3_model'
-
-      - name: Upload as Kaggle Dataset
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
-        run: |
-          export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
-          export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
-          kaggle datasets -h
-
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
