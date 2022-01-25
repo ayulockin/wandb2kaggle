@@ -1,0 +1,13 @@
+name: 'Download the model saved as W&B Artifact'
+description: 'Provide the name of the W&B model artifact where the model is saved. You can find it by visiting the artifact page of your W&B workspace.'
+inputs:
+  artifact_path:
+    description: 'Artifact path of the format <wandb profile id>/<wandb project name>/<artifact name>'
+    required: true
+    default: 'ayut/sr_ffhq/3jygvqe3_model'
+runs:
+  using: "composite"
+  steps:
+    - run: echo Artifact Path ${{ inputs.artifact_path }}.
+      shell: bash
+    - run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_path }}

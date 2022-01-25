@@ -6,9 +6,6 @@ jobs:
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
-      
-      - name: Get the W&B artifact path
-        uses: .github/actions/define_artifact
 
       - name: Setup Python version
         uses: actions/setup-python@v2
@@ -28,7 +25,10 @@ jobs:
           wandb login "$WANDB_API"
           
       - name: Download the model
-        run: python download_model_artifact.py --artifact_name ${{ inputs.who-to-greet }}
+        id: foo
+        uses: ./.github/actions/download_artifact
+        with:
+          artifact_path: 'ayut/sr_ffhq/3jygvqe3_model'
 
       - name: Upload as Kaggle Dataset
         shell: bash
