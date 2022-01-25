@@ -28,3 +28,6 @@ jobs:
           export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
           export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
           kaggle datasets -h
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
