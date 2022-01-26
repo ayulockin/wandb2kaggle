@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Upload model saved as W&B artifact as Kaggle Dataset
 on: 
   issues:
     types: opened
