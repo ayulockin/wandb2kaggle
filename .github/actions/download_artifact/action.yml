@@ -23,6 +23,7 @@ runs:
       with:
         msg: ${{ inputs.artifact_name }}
     - run: echo ${{ steps.split.outputs._2 }}
+      shell: bash
     - name: Run download_model_artifact.py
       run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_name }} --root_path ${{ inputs.root_path }}
       shell: bash
