@@ -25,7 +25,7 @@ jobs:
         name: Download Model
         uses: ./.github/actions/download_artifact
         with:
-          artifact_name: 'ayut/sr_ffhq/3jygvqe3_model'
+          artifact_name: 'ayut/convnext/16vi9e31_model'
 
       - name: Print W&B Artifact Dir Path
         run: ls ${{ steps.download.outputs.artifact_dir_path }}
