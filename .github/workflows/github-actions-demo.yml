@@ -1,8 +1,9 @@
 name: GitHub Actions Demo
-on: [push]
+on: 
+  issues:
+    types: opened
 jobs:
   wandb-kaggle:
-    if: github.event.head_commit.message == 'wandb-to-kaggle'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
