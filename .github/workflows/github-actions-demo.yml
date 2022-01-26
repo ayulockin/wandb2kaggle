@@ -39,7 +39,7 @@ jobs:
         #   export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
         #   export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
         #   kaggle datasets -h
-        uses: jaimevalero/push-kaggle-dataset@v1.0.3
+        uses: jaimevalero/push-kaggle-dataset@v1
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
