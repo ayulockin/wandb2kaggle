@@ -36,10 +36,9 @@ jobs:
       - name: Upload as Kaggle Dataset
         shell: bash
         run: |
+          export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+          export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
           kaggle datasets -h
-        env:
-          KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
 
       - name: List files in the repository
         run: |
