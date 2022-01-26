@@ -34,11 +34,20 @@ jobs:
         shell: bash
 
       - name: Upload as Kaggle Dataset
-        shell: bash
-        run: |
-          export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
-          export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
-          kaggle datasets -h
+        # shell: bash
+        # run: |
+        #   export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+        #   export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
+        #   kaggle datasets -h
+        uses: jaimevalero/push-kaggle-dataset@v1.0.3
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        with:
+          id: "ayuraj/test-dataset"
+          title: "Testing github actions for uploading datasets"
+          files: ${{ steps.download.outputs.artifact_dir_path }}
+          is_public: true
 
       - name: List files in the repository
         run: |
