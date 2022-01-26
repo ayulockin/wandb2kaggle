@@ -21,25 +21,25 @@ jobs:
         shell: bash
         env:
           WANDB_API: ${{ secrets.WANDB_KEY }}
-        run: |
-          wandb login "$WANDB_API"
+        run: wandb login "$WANDB_API"
 
       - id: download
         name: Download Model
         uses: ./.github/actions/download_artifact
         with:
-          artifact_path: 'ayut/sr_ffhq/3jygvqe3_model'
+          artifact_name: 'ayut/sr_ffhq/3jygvqe3_model'
 
       - name: Print W&B Artifact Dir Path
-        run: echo path ${{ steps.download.outputs.artifact_dir_path }}
+        run: ls ${{ steps.download.outputs.artifact_dir_path }}
         shell: bash
 
       - name: Upload as Kaggle Dataset
         shell: bash
         run: |
-          export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
-          export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
           kaggle datasets -h
+        env:
+          KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
 
       - name: List files in the repository
         run: |

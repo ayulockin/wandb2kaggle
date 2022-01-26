@@ -21,9 +21,3 @@ runs:
     - name: Run download_model_artifact.py
       run: python download_model_artifact.py --artifact_name ${{ inputs.artifact_name }} --root_path ${{ inputs.root_path }}
       shell: bash
-    - name: Get target dir to be uploaded as Kaggle dataset
-      id: target_path
-      uses: jungwinter/split@v2
-      with:
-        msg: ${{ inputs.artifact_name }}
-        separator: '/'
