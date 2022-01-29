@@ -17,10 +17,12 @@ jobs:
         with:
           packages: wandb kaggle
 
-      - name: Loging W&B 
+      - name: Loging W&B and Kaggle
         shell: bash
         env:
           WANDB_API: ${{ secrets.WANDB_KEY }}
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: wandb login "$WANDB_API"
 
       - name: Download and Upload
