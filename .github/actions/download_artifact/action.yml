@@ -14,18 +14,18 @@ inputs:
 
   id:
     description: "Dataset identifier in format {username}/{dataset})."
-    required: false
+    required: true
     default: "{KAGGLE_USERNAME}/{GITHUB_REPO_NAME}"
 
   title:
     description: "Title of the dataset, only if it has to be created."
-    required: false
+    required: true
     default: "dataset id"
 
   is_public:
     description: "Create publicly (default is private)."
     required: false
-    default: False
+    default: false
 
 outputs:
   artifact_dir_path:
@@ -36,14 +36,6 @@ runs:
   using: "composite"
   steps:
     - run: echo Artifact Path ${{ inputs.artifact_name }}.
-      shell: bash
-
-    - uses: jungwinter/split@v2
-      id: split
-      with:
-        msg: ${{ inputs.artifact_name }}
-
-    - run: echo ${{ steps.split.outputs._2 }}
       shell: bash
 
     - name: Run download_model_artifact.py
