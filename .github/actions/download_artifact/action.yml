@@ -27,11 +27,6 @@ inputs:
     required: false
     default: false
 
-outputs:
-  artifact_dir_path:
-    description: "Path to the Artifact Directory to be uploaded as Kaggle Dataset."
-    value: ./${{ inputs.root_path  }}
-
 runs:
   using: "composite"
   steps:
@@ -47,5 +42,5 @@ runs:
       with:
         id: ${{ inputs.id }}
         title: ${{ inputs.title }}
-        files: ${{ outputs.artifact_dir_path }}
+        files: ./${{ inputs.root_path }}
         is_public: ${{ inputs.is_public }}
