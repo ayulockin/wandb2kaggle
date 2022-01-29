@@ -1,5 +1,5 @@
-name: 'Download the model saved as W&B Artifact'
-description: 'Provide the name of the W&B model artifact where the model is saved. You can find it by visiting the artifact page of your W&B workspace.'
+name: 'W&B Artifact to Kaggle Dataset'
+description: 'Upload the model saved as W&B Artifact to Kaggle Dataset'
 
 inputs:
   artifact_name:
