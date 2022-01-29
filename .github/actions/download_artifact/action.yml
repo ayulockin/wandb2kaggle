@@ -52,9 +52,6 @@ runs:
 
     - name: Upload as Kaggle Dataset
       uses: jaimevalero/push-kaggle-dataset@v1.0.2
-      env:
-        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       with:
         id: ${{ inputs.id }}
         title: ${{ inputs.title }}
