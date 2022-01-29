@@ -1,7 +1,5 @@
 name: Upload model saved as W&B artifact as Kaggle Dataset
-on: 
-  issues:
-    types: opened
+on: [push]
 jobs:
   wandb-kaggle:
     runs-on: ubuntu-latest
