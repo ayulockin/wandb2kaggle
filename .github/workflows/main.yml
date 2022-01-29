@@ -23,23 +23,11 @@ jobs:
           WANDB_API: ${{ secrets.WANDB_KEY }}
         run: wandb login "$WANDB_API"
 
-      - id: download
+      - id: Download and Upload
         name: Download Model
         uses: ./.github/actions/download_artifact
         with:
           artifact_name: 'ayut/convnext/16vi9e31_model'
-
-      - name: Print W&B Artifact Dir Path
-        run: ls ${{ steps.download.outputs.artifact_dir_path }}
-        shell: bash
-
-      - name: Upload as Kaggle Dataset
-        uses: jaimevalero/push-kaggle-dataset@v1.0.2
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        with:
-          id: "ayuraj/test-dataset"
-          title: "Testing github actions for uploading datasets"
-          files: ${{ steps.download.outputs.artifact_dir_path }}
+          id: 'ayut/test-dataset'
+          title: 'Testing github actions for uploading datasets'
           is_public: true
