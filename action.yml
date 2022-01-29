@@ -1,4 +1,4 @@
-name: 'wandb2kaggle'
+name: 'W&B Artifact to Kaggle Dataset'
 description: 'Upload the model saved as W&B Artifact to Kaggle Dataset'
 branding:
   icon: 'box'  
