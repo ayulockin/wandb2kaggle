@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/download_artifact
         with:
           artifact_name: 'ayut/convnext/16vi9e31_model'
-          id: 'ayut/test-dataset'
+          id: 'ayuraj/test-dataset'
           title: 'Testing github actions for uploading datasets'
           is_public: true
           kaggle_username: ${{ secrets.KAGGLE_USERNAME }}
