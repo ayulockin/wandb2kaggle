@@ -22,7 +22,7 @@ jobs:
         run: wandb login "$WANDB_API"
 
       - name: Download and Upload
-        uses: actions/w-b-artifact-to-kaggle-dataset@v1
+        uses: ayulockin/wandb2kaggle@v1
         with:
           artifact_name: 'ayut/convnext/16vi9e31_model'
           id: 'ayuraj/test-dataset'
