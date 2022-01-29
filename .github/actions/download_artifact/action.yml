@@ -26,6 +26,14 @@ inputs:
     description: "Create publicly (default is private)."
     required: false
     default: false
+    
+  kaggle_username:
+    description: "Get kaggle username from secrets"
+    required: true
+    
+  kaggle_key:
+    description: "Get secret Kaggle key from secrets"
+    required: true
 
 runs:
   using: "composite"
@@ -39,6 +47,9 @@ runs:
 
     - name: Upload as Kaggle Dataset
       uses: jaimevalero/push-kaggle-dataset@v1.0.2
+      env:
+        KAGGLE_USERNAME: ${{ inputs.kaggle_username }}
+        KAGGLE_KEY: ${{ inputs.kaggle_key }}
       with:
         id: ${{ inputs.id }}
         title: ${{ inputs.title }}
