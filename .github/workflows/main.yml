@@ -23,8 +23,7 @@ jobs:
           WANDB_API: ${{ secrets.WANDB_KEY }}
         run: wandb login "$WANDB_API"
 
-      - id: Download and Upload
-        name: Download Model
+      - name: Download and Upload
         uses: ./.github/actions/download_artifact
         with:
           artifact_name: 'ayut/convnext/16vi9e31_model'
