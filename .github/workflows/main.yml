@@ -24,9 +24,9 @@ jobs:
       - name: Download and Upload
         uses: ayulockin/wandb2kaggle@v1
         with:
-          artifact_name: 'ayut/convnext/16vi9e31_model'
-          id: 'ayuraj/test-dataset'
-          title: 'Testing github actions for uploading datasets'
+          artifact_name: 'ayut/ubiquant_kaggle/Baseline_LGBM'
+          id: 'ayuraj/ubiquant-lgbm'
+          title: 'Ubiquant LightGBM Models'
           is_public: true
           kaggle_username: ${{ secrets.KAGGLE_USERNAME }}
           kaggle_key: ${{ secrets.KAGGLE_KEY }}
