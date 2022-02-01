@@ -13,7 +13,7 @@ def get_args_parser():
 
 def main(args):
     run = wandb.init(project=args.project_name)
-    artifact = run.use_artifact(f'{args.artifact_name}:latest', type='model')
+    artifact = run.use_artifact(f'{args.artifact_name}:latest')
     artifact_dir = artifact.download(root=args.root_path)
 
 if __name__ == '__main__':
