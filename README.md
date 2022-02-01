@@ -58,7 +58,11 @@ If `true` the created Kaggle dataset is public.
 
 ## Note
 
-The provided `main.yml` file triggers the workflow when a commit is made to the `main` branch. It would be a good practice to use Pull Request. Here's a [list of events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) that can trigger a workflow. 
+* The provided `main.yml` file triggers the workflow when a commit is made to the `main` branch. It would be a good practice to use Pull Request. Here's a [list of events](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) that can trigger a workflow. 
+* Sometimes the workflow might fail. If it's a `Dataset Creation Error` as shown in the image below, manually visit Kaggle Dataset (Your Work section) to see if the dataset was created or not. 
+
+  <img width="864" alt="image" src="https://user-images.githubusercontent.com/31141479/151931231-63791034-2cd6-49ef-9f01-99627d432153.png">
+
 
 ## Acknowledgement
 
