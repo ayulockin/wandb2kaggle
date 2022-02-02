@@ -29,7 +29,8 @@ In order to use the action you will have to have a [W&B account](https://wandb.a
 
 ## How to use?
 
-You can copy the `main.yml` workflow file from `.github/workflow/` and modify the input parameters accordingly. 
+* You can fork this repository and modify the input parameters in the `main.yml` workflow file located at `.github/workflow/`. 
+* In your own repository you can create a workflow `main.yml` file and add the code snippet as shown below. Note that you will have to copy the `download_model_artifact.py` file to your repository as well.
 
 ```
 - name: W&B Artifact to Kaggle Dataset
