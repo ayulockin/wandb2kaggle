@@ -49,7 +49,7 @@ runs:
       shell: bash
 
     - name: Upload as Kaggle Dataset
-      uses: jaimevalero/push-kaggle-dataset@v1.0.2
+      uses: jaimevalero/push-kaggle-dataset@v3
       env:
         KAGGLE_USERNAME: ${{ inputs.kaggle_username }}
         KAGGLE_KEY: ${{ inputs.kaggle_key }}
